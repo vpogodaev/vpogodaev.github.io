@@ -42,11 +42,9 @@ function isAppleDevice() {
 }
 
 function adaptForIos(timeStamp) {
-    // if (!isAppleDevice()) {
-    //     return timeStamp;
-    // }
-
-    console.log('newTimeStamp', timeStamp.replace(/-/g, '/'));
+    if (!isAppleDevice()) {
+        return timeStamp;
+    }
 
     return timeStamp.replace(/-/g, '/');
 }
