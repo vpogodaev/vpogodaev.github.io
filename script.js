@@ -43,5 +43,5 @@ function adaptForIos(timeStamp) {
         return timeStamp;
     }
 
-    return timeStamp.replace('-', '/');
+    return timeStamp.replaceAll('-', '/');
 }
