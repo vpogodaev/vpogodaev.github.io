@@ -17,7 +17,7 @@ function getTimePassed(timeStamp) {
         day = 24 * hour,
         message = 'updated ';
 
-    var timeFrom = new Date(toUTC(new Date(timeStamp))).getTime();
+    var timeFrom = new Date(toUTC(new Date(adaptForIos(timeStamp)))).getTime();
     var timeTo = new Date().getTime();
 
     var passedTime = timeTo - timeFrom;
@@ -32,4 +32,16 @@ function getTimePassed(timeStamp) {
         var days = Math.round(passedTime / day);
         return days === 1 ? (message + ' yesterday') : (message + days + ' days ago');
     }
+}
+
+function isAppleDevice() {
+    return navigator.userAgent.match(/(iPhone|iPod|iPad)/) != null;
+}
+
+function adaptForIos(timeStamp) {
+    if (!isAppleDevice()) {
+        return timeStamp;
+    }
+
+    return timeStamp.replace('-', '/');
 }
