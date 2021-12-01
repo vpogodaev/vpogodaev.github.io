@@ -1,6 +1,9 @@
 var passedTime = document.getElementById('js-passed-time');
 
 var timeStamp = passedTime.dataset.timeStamp;
+
+console.log('timeStamp', timeStamp);
+
 var newTimeStamp = getTimePassed(timeStamp);
 
 passedTime.textContent = newTimeStamp;
@@ -39,9 +42,11 @@ function isAppleDevice() {
 }
 
 function adaptForIos(timeStamp) {
-    if (!isAppleDevice()) {
-        return timeStamp;
-    }
+    // if (!isAppleDevice()) {
+    //     return timeStamp;
+    // }
 
-    return timeStamp.replaceAll('-', '/');
+    console.log('newTimeStamp', timeStamp.replace(/-/g, '/'));
+
+    return timeStamp.replace(/-/g, '/');
 }
